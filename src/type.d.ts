@@ -1,7 +1,6 @@
 export interface ISocialLinks {
-  discord: string;
-  twitter: string;
-  website: string;
+  name: string;
+  url: string;
 }
 
 export interface IProject {
@@ -15,6 +14,6 @@ export interface IProject {
   steps: string[];
   project_symbol: string;
   project_logo: string;
-  project_socials: ISocialLinks;
+  project_socials: ISocialLinks[];
   status: string;
 }

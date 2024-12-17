@@ -21,11 +21,11 @@ export const mockData: IProject[] = [
     project_name: "Nexus",
     project_symbol: "Nexus",
     project_logo: "https://freeairdrop.io/Images%20for/Airdrops/nexus.webp",
-    project_socials: {
-      discord: "https://discord.gg/nexus-xyz",
-      twitter: "https://x.com/NexusLabsHQ",
-      website: "https://nexus.xyz/",
-    },
+    project_socials: [
+      { name: "discord", url: "https://discord.gg/nexus-xyz" },
+      { name: "twitter", url: "https://x.com/NexusLabsHQ" },
+      { name: "website", url: "https://nexus.xyz/" },
+    ],
     status: "confirmed",
   },
 
@@ -49,11 +49,11 @@ export const mockData: IProject[] = [
     project_name: "Mitosis",
     project_symbol: "Mito",
     project_logo: "https://freeairdrop.io/Images%20for/Airdrops/mitosis.webp",
-    project_socials: {
-      discord: "https://discord.gg/mitosis",
-      twitter: "https://x.com/MitosisOrg",
-      website: "https://mitosis.org/",
-    },
+    project_socials: [
+      { name: "discord", url: "https://discord.gg/mitosis" },
+      { name: "twitter", url: "https://x.com/MitosisOrg" },
+      { name: "website", url: "https://mitosis.org/" },
+    ],
     status: "Potential",
   },
 ];

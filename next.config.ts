@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "https://freeairdrop.io",
+        hostname: "freeairdrop.io",
       },
     ],
   },

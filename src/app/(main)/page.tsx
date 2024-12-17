@@ -12,17 +12,17 @@ function App() {
   };
 
   return (
-    <div className="bg-zinc-100 h-screen">
+    <div className="bg-zinc-100 h-screen p-4">
       <div className="flex gap-8">
         {mockData.map((data) => (
-          <div key={data._id} className="flex gap-10a p-4 bg-red-400">
+          <div key={data._id} className="flex gap-10 p-4 border-2 rounded-md">
             <div className="space-y-4">
               <div className="h-36 w-36 rounded-full overflow-hidden">
                 <img src={data.project_logo} alt={`logo of ${data.project_name}`} />
               </div>
               <Badge className={statusColor[data.status.toLowerCase()]}>{data.status}</Badge>
             </div>
-            <div className="">
+            <div className="flex flex-col gap-2">
               <div className="flex gap-6">
                 <div>
                   <p className="text-lg font-medium">Name</p>
@@ -39,7 +39,7 @@ function App() {
                 <p>{data.category}</p>
               </div>
 
-              <Link href={`/${data._id}`}>
+              <Link href={`/${data._id}`} className="flex gap-1 mt-auto">
                 Check now <ArrowRight />
               </Link>
             </div>
