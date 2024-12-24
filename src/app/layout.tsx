@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/features/Header/Header";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-[1200px] mx-auto`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-[1200px] mx-auto`}>
+        <Header />
+        <div>{children}</div>
+      </body>
     </html>
   );
 }
