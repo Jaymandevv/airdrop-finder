@@ -12,7 +12,7 @@ function ProjectDetails() {
   const data = mockData.filter((data: IProject) => data._id == _id)[0];
   console.log(data);
 
-  const socialIcon: any = {
+  const socialIcon = {
     twitter: <Twitter />,
     website: <Globe />,
     discord: <Facebook />,
