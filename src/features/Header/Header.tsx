@@ -63,7 +63,7 @@ const components: componentsType[] = [
 
 function Header() {
   return (
-    <nav className="bg-green-500 flex justify-between">
+    <nav className="flex justify-between">
       <p>Airdrop Finder</p>
 
       <NavigationMenu>
