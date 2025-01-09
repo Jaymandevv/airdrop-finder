@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/features/Header/Header";
+import { Toaster } from "@/components/ui/toaster";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -28,9 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-[1200px] mx-auto`}>
-        <Header />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen max-w-[1200px] mx-auto`}>
         <div>{children}</div>
+        <Toaster />
       </body>
     </html>
   );

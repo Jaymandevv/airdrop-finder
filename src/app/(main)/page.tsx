@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 function App() {
-  const statusColor: any = {
+  const statusColor = {
     confirmed: "bg-green-500",
     potential: "bg-red-500",
   };

@@ -57,3 +57,17 @@ export const mockData: IProject[] = [
     status: "Potential",
   },
 ];
+
+export const user1 = {
+  name: "Garba Jamiu",
+  email: "garbajamiu2000@gmail.com",
+  password: "123456",
+  role: "admin",
+};
+
+export const user2 = {
+  name: "Jayman",
+  email: "jayman@gmail.com",
+  password: "123456",
+  role: "user",
+};
