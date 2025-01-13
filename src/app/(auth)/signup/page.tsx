@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
 //TOdo:
-// Form schema - zod
+// Form schema - zod d
 // Get the value from form
 // intergate supabe auth
 
@@ -61,7 +61,7 @@ function Signup() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your mail" {...field} />
+                  <Input placeholder="Enter your email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -91,7 +91,7 @@ function Signup() {
                 <FormControl>
                   <div className="flex relative items-center">
                     <Input placeholder="Enter password" {...field} type={showPassword ? "text" : "password"} />
-                    <button className="absolute right-2" onClick={handleShowPassword}>
+                    <button type="button" className="absolute right-2" onClick={handleShowPassword}>
                       {showPassword ? <EyeOff /> : <Eye />}
                     </button>
                   </div>
@@ -115,7 +115,7 @@ function Signup() {
             )}
           />
 
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </Form>
       <p className="text-center mt-2">

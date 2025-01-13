@@ -1,3 +1,0 @@
-interface FormFieldProps {}
-
-function FormField() {}
