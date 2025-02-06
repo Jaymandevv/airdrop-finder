@@ -10,8 +10,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import useSignUp from "@/features/authentication/useAuth.js";
 
-//TOdo:
+//Todo:
 // Form schema - zod d
 // Get the value from form
 // intergate supabe auth
@@ -30,6 +31,7 @@ const FormSchema = z
 
 function Signup() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { isLoading, signUp } = useSignUp();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -43,6 +45,7 @@ function Signup() {
 
   const handleSubmit = (values: z.infer<typeof FormSchema>) => {
     console.log("Value: ", values);
+    signUp(values);
   };
 
   const handleShowPassword = () => {
@@ -115,7 +118,9 @@ function Signup() {
             )}
           />
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={isLoading}>
+            Submit
+          </Button>
         </form>
       </Form>
       <p className="text-center mt-2">
