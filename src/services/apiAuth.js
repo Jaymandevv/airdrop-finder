@@ -1,12 +1,15 @@
 import supabase from "./supabase";
 
 export async function signUpApi({ email, username, password }) {
+  const role = email === "garbajamiu2000@gmail.com" ? "admin" : "client";
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
         username,
+        role,
       },
     },
   });
@@ -16,18 +19,31 @@ export async function signUpApi({ email, username, password }) {
   return data;
 }
 
-// While logining I should able to check for the user role
-// and use that to render the dashboard
+export async function signInAPi({ email, password }) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
 
-export async function signInAPi({ email, password }) {}
-
-// This will be call immediately after signup and signin
-// It takes the current user Id and gives a default role "client"
-// Use the role to load the page after then
-export async function auth(userId, user_role) {
-  const { data, error } = await supabase.from("auth").insert([{ userId, user_role }]);
-
-  if (error) return new Error(error.message);
+  if (error) throw new Error(error.message);
 
   return data;
+}
+
+export async function getCurrentUser() {
+  const { data: session } = await supabase.auth.getSession();
+
+  if (!session.session) return null;
+
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error) throw new Error(error.message);
+
+  return data?.user;
+}
+
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) throw new Error(error.message);
 }

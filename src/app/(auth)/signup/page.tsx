@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import useSignUp from "@/features/authentication/useAuth.js";
+import useSignUp from "@/features/authentication/useSignUp";
 
 //Todo:
 // Form schema - zod d

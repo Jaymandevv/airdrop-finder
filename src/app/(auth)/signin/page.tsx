@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Eye, EyeOff } from "lucide-react";
+import useLogin from "@/features/authentication/useLogin";
 
 const FormSchema = z.object({
   email: z.string().min(1, { message: "email is required!" }),
@@ -29,7 +30,7 @@ function Signin() {
     },
   });
   const { toast } = useToast();
-  const router = useRouter();
+  const { login, isLoading } = useLogin();
 
   const handleShowPassword = () => {
     setShowPassword((s) => !s);
@@ -38,16 +39,14 @@ function Signin() {
   function handleSubmit(values: z.infer<typeof FormSchema>) {
     if (!values) {
       toast({
-        description: "Something went wrong!",
+        description: "Please input you login credentials",
       });
 
       return;
     }
+    console.log(values, "loginn....");
 
-    router.push("/");
-    toast({
-      description: "Successfully login!",
-    });
+    login(values);
   }
 
   return (
@@ -88,7 +87,9 @@ function Signin() {
             )}
           />
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={isLoading}>
+            Submit
+          </Button>
         </form>
       </Form>
       <p className="text-center mt-2">

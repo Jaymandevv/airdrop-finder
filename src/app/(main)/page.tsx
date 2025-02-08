@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge } from "@/components/ui/badge";
 import { mockData } from "@/mock/mockData";
 import { ArrowRight } from "lucide-react";

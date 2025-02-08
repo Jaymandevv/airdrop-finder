@@ -12,6 +12,7 @@ import {
   // NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import UserAvatar from "../authentication/userAvatar";
 // import { Button } from "@/components/ui/button";
 
 interface componentsType {
@@ -95,8 +96,9 @@ function Header() {
         </NavigationMenu>
 
         <div className="flex gap-3">
-          <Link href="/signin">Sign in</Link>
-          <Link href="/signup">Sign up</Link>
+          {/* <Link href="/signin">Sign in</Link>
+          <Link href="/signup">Sign up</Link> */}
+          <UserAvatar />
         </div>
       </div>
     </nav>
