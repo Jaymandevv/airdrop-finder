@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <ReactQueryClientProvider>
       <html lang="en">
-        <body className={`antialiased h-screen max-w-[1200px] mx-auto`}>
-          <div>{children}</div>
+        <body>
+          <div className={`antialiased h-screen max-w-[1200px] mx-auto`}>{children}</div>
           <Toaster />
         </body>
       </html>

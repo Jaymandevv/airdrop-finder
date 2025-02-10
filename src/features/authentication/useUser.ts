@@ -11,6 +11,7 @@ function useUser() {
     isLoading,
     user,
     isAuthenticated: user?.role === "authenticated",
+    isAdmin: user?.user_metadata?.role === "admin",
   };
 }
 

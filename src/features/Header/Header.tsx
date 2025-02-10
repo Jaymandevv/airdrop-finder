@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import UserAvatar from "../authentication/userAvatar";
+import useUser from "../authentication/useUser";
+import { Button } from "@/components/ui/button";
 // import { Button } from "@/components/ui/button";
 
 interface componentsType {
@@ -63,6 +65,8 @@ const components: componentsType[] = [
 ];
 
 function Header() {
+  const { isAdmin } = useUser();
+
   return (
     <nav className="flex items-center justify-between">
       <p>Airdrop Finder</p>
@@ -95,11 +99,8 @@ function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="flex gap-3">
-          {/* <Link href="/signin">Sign in</Link>
-          <Link href="/signup">Sign up</Link> */}
-          <UserAvatar />
-        </div>
+        {isAdmin && <Button>Create</Button>}
+        <UserAvatar />
       </div>
     </nav>
   );
