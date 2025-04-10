@@ -1,19 +1,29 @@
+"use client";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
+  // NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuViewport,
+  // NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import UserAvatar from "../authentication/userAvatar";
+import useUser from "../authentication/useUser";
+import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 
 interface componentsType {
   title: string;
   url: string;
+  children?: {
+    title: string;
+    url: string;
+  }[];
 }
 
 const components: componentsType[] = [
@@ -33,27 +43,64 @@ const components: componentsType[] = [
     title: "FAQ",
     url: "#faq",
   },
+  {
+    title: "Wallets",
+    url: "#wallets",
+  },
+  {
+    title: "Exchanges",
+    url: "/exchanges",
+    children: [
+      {
+        title: "CEX",
+        url: "/exchanges/cex",
+      },
+
+      {
+        title: "DEX",
+        url: "/exchanges/dex",
+      },
+    ],
+  },
 ];
 
 function Header() {
-  return (
-    <nav className="w-full">
-      <div className="flex justify-between">
-        <div className="logo bg-red-500">Airdrop finder</div>
+  const { isAdmin } = useUser();
 
+  return (
+    <nav className="flex items-center justify-between">
+      <p>Airdrop Finder</p>
+
+      <div className="flex gap-6  items-center">
         <NavigationMenu>
-          <NavigationMenuList>
+          <NavigationMenuList className="flex gap-6">
             {components.map((comp) => (
-              <>
-                <NavigationMenuItem>
-                  <Link href={comp.url} legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>{comp.title}</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </>
+              <div key={comp.url}>
+                {comp?.children ? (
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>{comp.title}</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      {comp.children.map((child) => (
+                        <Link key={child.title} href={child.url} legacyBehavior passHref>
+                          <NavigationMenuLink className={navigationMenuTriggerStyle()}>{child.title}</NavigationMenuLink>
+                        </Link>
+                      ))}
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem key={comp.title}>
+                    <Link href={comp.url} legacyBehavior passHref>
+                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>{comp.title}</NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                )}
+              </div>
             ))}
           </NavigationMenuList>
         </NavigationMenu>
+
+        {isAdmin && <Button>Create</Button>}
+        <UserAvatar />
       </div>
     </nav>
   );
