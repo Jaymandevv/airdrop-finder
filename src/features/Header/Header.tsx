@@ -15,6 +15,8 @@ import Link from "next/link";
 import UserAvatar from "../authentication/userAvatar";
 import useUser from "../authentication/useUser";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import CreateModal from "@/components/modal/createModal";
 // import { Button } from "@/components/ui/button";
 
 interface componentsType {
@@ -66,6 +68,11 @@ const components: componentsType[] = [
 
 function Header() {
   const { isAdmin } = useUser();
+  // const [showModal, setShowModal] = useState<boolean>(false);
+
+  // const _handleModalOpen = () => {
+  //   setShowModal((s) => !s);
+  // };
 
   return (
     <nav className="flex items-center justify-between">
@@ -99,7 +106,7 @@ function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {isAdmin && <Button>Create</Button>}
+        {isAdmin && <CreateModal />}
         <UserAvatar />
       </div>
     </nav>
